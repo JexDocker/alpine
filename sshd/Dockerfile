@@ -10,7 +10,8 @@ RUN apk --update add openssh \
 		&& rm -rf /var/cache/apk/* /tmp/*
 
 COPY entrypoint-sshd.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/entrypoint-sshd.sh
 
 EXPOSE 22
 
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["entrypoint-sshd.sh"]
